@@ -1,0 +1,192 @@
+<div class="body">
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            <form
+  [formGroup]="signupform"
+  (ngSubmit)="handleSignUp()"
+  class="form signup"
+>
+<h1>Sign up</h1>
+    
+        <input
+        required=""
+        placeholder="Email"
+        [class.is-invalid]="data['email'].touched && data['email'].invalid"
+        formControlName="email"
+      /> <span
+      *ngIf="
+        data['email'].errors &&
+        data['email'].errors['minlength'] &&
+        !data['email'].errors['pattern']
+      "
+    >
+    <i class="bi bi-info-circle"></i>the minimun length is 6 character
+    </span>
+    <span *ngIf="data['email'].errors && data['email'].errors['pattern']">
+      <i class="bi bi-info-circle"></i>invalid email
+    </span>
+    <span *ngIf="data['email'].touched && data['email'].invalid">
+      <i class="bi bi-info-circle"></i> email is required
+    </span>
+    <span
+      *ngIf="
+        data['email'].errors &&
+        data['email'].errors['maxlength'] &&
+        !data['email'].errors['pattern']
+      "
+    >
+    <i class="bi bi-info-circle"></i> maximum length is 30 character
+    </span>
+      
+        <input
+        type="tel"
+        required=""
+        placeholder="Phone no"
+        [class.is-invalid]="data['phone'].touched && data['phone'].invalid"
+        formControlName="phone"
+      />
+     <span *ngIf="
+      data['phone'].errors &&
+      data['phone'].errors['minlength']
+    "
+  >
+  <i class="bi bi-info-circle"></i> the minimun length is 10 character
+  </span>
+ 
+  <span *ngIf="data['phone'].touched && data['phone'].invalid">
+    <i class="bi bi-info-circle"></i>Phone no is required
+  </span>
+  <span
+    *ngIf="
+      data['phone'].errors &&
+      data['phone'].errors['maxlength'] 
+    "
+  >
+  <i class="bi bi-info-circle"></i>maximum length is 10 character
+  </span>
+    
+      
+      <input
+      required=""
+      placeholder="RC / Licesence"
+      [class.is-invalid]="data['Id'].touched && data['Id'].invalid"
+      formControlName="Id"
+    />
+    <span
+      *ngIf="
+        data['Id'].errors &&
+        data['Id'].errors['minlength']
+      "
+    >
+    <i class="bi bi-info-circle"></i> the minimun length is 10 character
+    </span>
+   
+    <span *ngIf="data['Id'].touched && data['Id'].invalid">
+      <i class="bi bi-info-circle"></i> RC / Licesence is required
+    </span>
+    <span
+      *ngIf="
+        data['Id'].errors &&
+        data['Id'].errors['maxlength'] 
+      "
+    >
+    <i class="bi bi-info-circle"></i> maximum length is 15 character
+    </span>
+      
+     
+    
+
+    
+       
+        <input
+        type="password"
+        placeholder="Password"
+        required=""
+        [class.is-invalid]="
+          data['password'].touched && data['password'].invalid
+        "
+        formControlName="password"
+      />
+      <span
+      *ngIf="data['password'].errors && data['password'].errors['minlength']"
+    >
+    <i class="bi bi-info-circle"></i> the minimun length is 3 character
+    </span>
+    <span *ngIf="data['password'].touched && data['password'].invalid">
+      <i class="bi bi-info-circle"></i> password is required
+    </span>
+    <span
+      *ngIf="data['password'].errors && data['password'].errors['maxlength']"
+    >
+    <i class="bi bi-info-circle"></i>maximum length is 20 character
+    </span>
+        
+        <p>
+            Already a member ?
+            <a  id="signIn">Log in</a>
+          </p>
+        <button type="submit" [disabled]="signupform.invalid" value="submit" id="In" routerLink="/login" >Signup</button>
+       
+      
+    </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <form  [formGroup]="signinform"
+            (ngSubmit)="loginWithEmailAndPassword()"
+            >
+            <h1>Sign in</h1>
+            <div class="social-container">
+              <!-- <a class="social d-none" (click)="loginWithFB()"><i class="fab fa-facebook-f"></i></a> -->
+              <a class="social" (click)="loginWithGoogle()"><i class="fab fa-google"></i></a>
+              <!-- <a class="social d-none" (click)="loginWithTwitter()"><i class="fab fa-twitter"></i></a> -->
+            </div>
+            <span class="text-dark">or use your account</span>
+            
+                
+                <input type="text" placeholder="Email" required=""
+                [class.is-invalid]="data1['email'].touched && data1['email'].invalid"
+                formControlName="email">
+                <span *ngIf="data1['email'].errors && data1['email'].errors['pattern']">
+                  <i class="bi bi-info-circle"></i>invalid email
+                </span>
+                <span *ngIf="data1['email'].touched && data1['email'].invalid">
+                  <i class="bi bi-info-circle"></i> email is required
+                </span>
+                
+                <input  type="password"
+                placeholder="password"
+                required=""
+                [class.invalid]="data1['password'].touched && data1['password'].invalid"
+                [class.is-invalid]="
+                  data1['password'].touched && data1['password'].invalid
+                "
+                formControlName="password"><span *ngIf="data1['password'].touched && data1['password'].invalid">
+                  <i class="bi bi-info-circle"></i>password is required
+                </span>
+            
+                  <p>
+                  Not Registered ?
+                  <a   id="signUp">Create an account</a>
+                </p>
+            
+            
+                <button type="submit"  value="Login" [disabled]="signinform.invalid" >Log In</button>
+              
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back!</h1>
+                    <p>To keep connected with us please login with your personal info</p>
+                    <button class="ghost" id="logIn" >Sign In</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Hello, Friend!</h1>
+                    <p>Enter your personal details and start journey with us</p>
+                    <button class="ghost" id="Up">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

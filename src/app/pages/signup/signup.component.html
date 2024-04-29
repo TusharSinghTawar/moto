@@ -1,0 +1,48 @@
+
+<div class="formContainer">
+  <form
+  [formGroup]="signupform"
+  (ngSubmit)="handleSubmit()"
+  class="form signup"
+>
+        <h3 class="">Signup Here</h3>
+    
+        <label for="username">Email</label>
+        <input
+        required=""
+        [class.is-invalid]="data['email'].touched && data['email'].invalid"
+        formControlName="email"
+      />
+        <label for="Mobileno">Mobile no</label>
+        <input
+        required=""
+        [class.is-invalid]="data['phone'].touched && data['phone'].invalid"
+        formControlName="phone"
+      />
+      <label for="Mobileno">RC / Licesence</label>
+      <input
+      required=""
+      [class.is-invalid]="data['phone'].touched && data['phone'].invalid"
+      formControlName="phone"
+    />
+
+    
+        <label for="password">Password</label>
+        <input
+        type="password"
+        required=""
+        [class.is-invalid]="
+          data['password'].touched && data['password'].invalid
+        "
+        formControlName="password"
+      />
+        
+        <p>
+            Already a member ?
+            <a class="login" routerLink="/signin">Log in</a>
+          </p>
+        <button type="submit" [disabled]="signupform.invalid" value="submit">Signup</button>
+       
+      
+    </form>
+    </div>

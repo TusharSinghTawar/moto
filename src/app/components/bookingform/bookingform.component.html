@@ -1,0 +1,36 @@
+<form [formGroup]="bookingform"
+(ngSubmit)="addPost()">
+    <div class="row g-3">
+        <div class="col-12 col-sm-6">
+            <input type="text" class="form-control border-0" placeholder="Your Name" style="height: 55px;" formControlName="name">
+        </div>
+        <div class="col-12 col-sm-6">
+            <input type="email" class="form-control border-0" placeholder="Your Email" style="height: 55px;" formControlName="email">
+        </div>
+        <div class="col-12 col-sm-6">
+            <select class="form-select border-0" style="height: 55px;" ormControlName="service">
+                <option selected>Select A Service</option>
+                <option value="Diagnostic Test">Diagnostic Test</option>
+                <option value="Engine Servicing"> Engine Servicing</option>
+                <option value="Tires Replacement">Tires Replacement</option>
+                <option value="Oil Changing">Oil Changing</option>
+                <option value="Vacuam Cleaning">Vacuam Cleaning</option>
+
+
+            </select>
+        </div>
+        <div class="col-12 col-sm-6">
+            <div class="date" id="date1" data-target-input="nearest">
+                <input type="date"
+                    class="form-control border-0 datetimepicker-input"
+                    placeholder="Service Date" data-target="#date1" data-toggle="datetimepicker" style="height: 55px;" formControlName="date">
+            </div>
+        </div>
+        <div class="col-12">
+            <textarea class="form-control border-0" placeholder="Special Request"  formControlName="location"></textarea>
+        </div>
+        <div class="col-12">
+            <button class="btn btn-secondary w-100 py-3" type="submit">Book Now</button>
+        </div>
+    </div>
+</form>

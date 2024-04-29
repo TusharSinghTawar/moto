@@ -1,0 +1,104 @@
+<div class="container">
+  <form
+    [formGroup]="signupform"
+    (ngSubmit)="handleSubmit()"
+    class="form signup"
+  >
+    <h1>Sign Up</h1>
+    <div class="inputBox">
+      <input
+        type="text"
+        required=""
+        name="username"
+        [class.is-invalid]="
+          data['username'].touched && data['username'].invalid
+        "
+        formControlName="username"
+      />
+      <i class="fa-regular fa-user"></i>
+      <span>username</span>
+    </div>
+    <app-error
+      *ngIf="data['username'].errors && data['username'].errors['minlength']"
+      >the minimun length is 3 character
+    </app-error>
+    <app-error *ngIf="data['username'].touched && data['username'].invalid">
+      username is required
+    </app-error>
+    <app-error
+      *ngIf="
+        data['username'].errors &&
+        data['username'].errors['maxlength'] &&
+        !data['username'].errors['minlength']
+      "
+    >
+      maximum length is 20 character
+    </app-error>
+
+    <div class="inputBox">
+      <input
+        required=""
+        [class.is-invalid]="data['email'].touched && data['email'].invalid"
+        formControlName="email"
+      />
+      <i class="fa-regular fa-envelope"></i>
+      <span>email address</span>
+    </div>
+    <app-error
+      *ngIf="
+        data['email'].errors &&
+        data['email'].errors['minlength'] &&
+        !data['email'].errors['pattern']
+      "
+    >
+      the minimun length is 6 character
+    </app-error>
+    <app-error *ngIf="data['email'].errors && data['email'].errors['pattern']">
+      invalid email
+    </app-error>
+    <app-error *ngIf="data['email'].touched && data['email'].invalid">
+      email is required
+    </app-error>
+    <app-error
+      *ngIf="
+        data['email'].errors &&
+        data['email'].errors['maxlength'] &&
+        !data['email'].errors['pattern']
+      "
+    >
+      maximum length is 30 character
+    </app-error>
+    <div class="inputBox">
+      <input
+        type="password"
+        required=""
+        [class.is-invalid]="
+          data['password'].touched && data['password'].invalid
+        "
+        formControlName="password"
+      /><i class="fa-solid fa-lock"></i>
+      <span>password</span>
+    </div>
+    <app-error
+      *ngIf="data['password'].errors && data['password'].errors['minlength']"
+    >
+      the minimun length is 3 character
+    </app-error>
+    <app-error *ngIf="data['password'].touched && data['password'].invalid">
+      password is required
+    </app-error>
+    <app-error
+      *ngIf="data['password'].errors && data['password'].errors['maxlength']"
+    >
+      maximum length is 20 character
+    </app-error>
+
+    <div class="inputBox">
+      <input type="submit" [disabled]="signupform.invalid" value="submit" />
+    </div>
+    <p>
+      Already a member ?
+      <a class="login" routerLink="/signin">Log in</a>
+    </p>
+  </form>
+</div>
