@@ -19,6 +19,9 @@ export class FormComponent implements OnInit {
 
   constructor(public authService: AuthService, private router: Router ,private rest:RestService ,@Inject(DOCUMENT) private document: Document) {}
   ngOnInit(): void {
+    if (typeof document !== 'undefined') {
+      // code that accesses the document object
+  
 	const signUpButton = document.getElementById('signUp') as HTMLButtonElement;
 	const signInButton = document.getElementById('signIn') as HTMLButtonElement;
 	const signUp = document.getElementById('Up') as HTMLButtonElement;
@@ -41,7 +44,7 @@ export class FormComponent implements OnInit {
 	  });
     this.onclick=()=>{
       container.classList.remove('right-panel-active');
-    };
+    };}
   
   }
   signupform = new FormGroup({
