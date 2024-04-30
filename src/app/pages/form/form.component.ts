@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
 import { RestService } from '../../services/rest/rest.service';
-import { error } from 'node:console';
+import { DOCUMENT } from '@angular/common';
 // const container1 = document.getElementById('container') as HTMLDivElement;
 
 @Component({
@@ -17,7 +17,7 @@ export class FormComponent implements OnInit {
 
    onclick(){}
 
-  constructor(public authService: AuthService, private router: Router ,private rest:RestService) {}
+  constructor(public authService: AuthService, private router: Router ,private rest:RestService ,@Inject(DOCUMENT) private document: Document) {}
   ngOnInit(): void {
 	const signUpButton = document.getElementById('signUp') as HTMLButtonElement;
 	const signInButton = document.getElementById('signIn') as HTMLButtonElement;

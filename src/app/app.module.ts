@@ -22,8 +22,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BookingformComponent } from './components/bookingform/bookingform.component';
 import { MapComponent } from './components/map/map.component';
 import { FormComponent } from './pages/form/form.component';
-import { provideHttpClient } from '@angular/common/http';
+
 import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withFetch } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -59,9 +60,7 @@ import { HttpClientModule } from '@angular/common/http';
     }),
     AppRoutingModule,ReactiveFormsModule
   ],
-  providers: [
-    provideClientHydration()
-  ],
+  providers: [provideHttpClient(withFetch())],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
